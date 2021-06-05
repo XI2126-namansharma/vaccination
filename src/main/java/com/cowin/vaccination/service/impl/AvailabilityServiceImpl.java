@@ -19,11 +19,18 @@ public class AvailabilityServiceImpl implements AvailabilityService {
     }
 
     @Override
-    public String availability(String pinCode, String date) {
+    public String availabilityForCurrentDay(String pinCode, String date) {
         String url = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode="+pinCode+"&date="+date;
         HttpEntity<String> request = new HttpEntity<>("");
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, request, String.class);
-        log.info("Http status - {} with response - {}",response.getStatusCode(),response.getBody());
+        return String.valueOf(response.getBody());
+    }
+
+    @Override
+    public String availabilityFor7Days(String pinCode, String date) {
+        String url = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode="+pinCode+"&date="+date;
+        HttpEntity<String> request = new HttpEntity<>("");
+        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, request, String.class);
         return String.valueOf(response.getBody());
     }
 }

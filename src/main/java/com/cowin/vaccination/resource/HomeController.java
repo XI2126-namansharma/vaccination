@@ -14,8 +14,13 @@ public class HomeController {
     @Autowired
     AvailabilityService availabilityService;
 
-    @GetMapping("/pin-code")
-    public String showAPI(@RequestParam String pinCode, @RequestParam String date) {
-        return availabilityService.availability(pinCode,date);
+    @GetMapping("/pin-code/find")
+    public String showAPIForCurrentDay(@RequestParam String pinCode, @RequestParam String date) {
+        return availabilityService.availabilityForCurrentDay(pinCode,date);
+    }
+
+    @GetMapping("/pin-code/calender")
+    public String showAPIFor7Days(@RequestParam String pinCode, @RequestParam String date) {
+        return availabilityService.availabilityFor7Days(pinCode,date);
     }
 }

@@ -1,7 +1,9 @@
 package com.cowin.vaccination.service;
 
-public interface AvailabilityService {
-    String availabilityForCurrentDay(String pinCode, String date);
+import org.json.JSONObject;
 
-    String availabilityFor7Days(String pinCode, String date);
+public interface AvailabilityService {
+    JSONObject availabilityForCurrentDay(String pinCode, String date);
+
+    JSONObject availabilityFor7Days(String pinCode, String date);
 }

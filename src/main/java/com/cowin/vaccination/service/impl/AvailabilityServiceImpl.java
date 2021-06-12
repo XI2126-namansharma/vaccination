@@ -23,7 +23,7 @@ public class AvailabilityServiceImpl implements AvailabilityService {
     @SneakyThrows
     @Override
     public JSONObject availabilityForCurrentDay(String pinCode, String date) {
-        String url = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode="+pinCode+"&date="+date;
+        String url = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=" + pinCode + "&date=" + date;
         HttpEntity<String> request = new HttpEntity<>("");
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, request, String.class);
         log.info("response received from rest client - {}", response);
@@ -34,7 +34,7 @@ public class AvailabilityServiceImpl implements AvailabilityService {
     @SneakyThrows
     @Override
     public JSONObject availabilityFor7Days(String pinCode, String date) {
-        String url = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode="+pinCode+"&date="+date;
+        String url = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=" + pinCode + "&date=" + date;
         HttpEntity<String> request = new HttpEntity<>("");
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, request, String.class);
         log.info("response received from rest client - {}", response);
